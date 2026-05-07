@@ -1502,6 +1502,19 @@ Le point d’entrée du service peut être soit l’un des services inclus, soit
 }
 ```
 
+### image.dangerouslyProcessSVG
+
+<p>
+
+**Type :** `boolean`<br />
+**Par défaut :** `false`<br />
+<Since v="6.3.0" />
+</p>
+
+  Permet aux images SVG d'être traitées par le pipeline d'optimisation des images.
+
+Cette option est désactivée par défaut car les SVG spécifiquement formés peuvent être extrêmement coûteux à traiter et utilisés par des acteurs malveillants pour exécuter des attaques par déni de service. N'activez cette option que si vous faites confiance à la source de vos images SVG et comprenez les risques liés à leur traitement.
+
 #### image.service.config.limitInputPixels
 
 <p>
@@ -1636,14 +1649,17 @@ Définit une liste de modèles d’URL autorisés comme source d’images pour l
 }
 ```
 
-Vous pouvez utiliser des caractères génériques pour définir les valeurs autorisées pour `hostname` et `pathname` comme décrit ci-dessous. Sinon, seules les valeurs exactes fournies seront configurées :
-`hostname` :
-  - Commencez avec `**.` pour autoriser tous les sous-domaines (`endsWith`).
-  - Commencez avec `*.` pour autoriser un seul niveau de sous-domaine.
+Vous pouvez utiliser des caractères génériques pour définir les valeurs autorisées pour `hostname` et `pathname` comme décrit ci-dessous. Sinon, seules les valeurs exactes fournies seront configurées.
 
-`pathname` :
-  - Terminez par `/**` pour autoriser toutes les sous-routes (`startsWith`).
+Modèles `hostname` :
+  - Commencez par `**.` pour autoriser tous les sous-domaines (comme `endsWith`).
+  - Commencez par `*.` pour autoriser un seul niveau de sous-domaine.
+
+Modèles `pathname` :
+  - Terminez par `/**` pour autoriser toutes les sous-routes (comme `startsWith`).
   - Terminez par `/*` pour autoriser un seul niveau de sous-route.
+
+Les redirections HTTP sont également suivies lorsqu'une URL d'image correspond à un modèle distant. L'URL de destination finale doit figurer parmi les modèles distants autorisés pour être chargée.
 
 ### image.responsiveStyles
 
