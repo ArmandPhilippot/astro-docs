@@ -8,7 +8,7 @@ footer.contribute: Contribuer
 footer.translatePage: Traduire cette page
 footer.sponsor: Parrainer
 # Used in `<Since>`: Added in: v0.24.0 [NEW]
-since.addedIn: 'Ajouté à la version :'
+since.addedIn: 'Ajouté à la version :'
 since.new: Nouveau
 since.beta: Bêta
 # Installation Guide
@@ -28,7 +28,7 @@ media.navTitle: Plus de guides sur les médias hébergés
 # Migration Guides vocabulary
 migration.navTitle: Plus de guides sur les migrations
 # `<RecipeLinks>` vocabulary
-recipesLink.singular: 'Recette associée :'
+recipesLink.singular: 'Recette associée :'
 recipesLink.plural: Recettes associées
 # 404 Page
 404.title: Page introuvable
@@ -44,8 +44,8 @@ integrations.more: "Plus d'intégrations"
 # Checklist component
 checklist.or: ou
 # Multiple Choice component
-multipleChoice.defaultCorrect: Correct !
-multipleChoice.defaultIncorrect: Réessayez !
+multipleChoice.defaultCorrect: Correct !
+multipleChoice.defaultIncorrect: Réessayez !
 multipleChoice.submitLabel: Envoyer
 # Tutorial Progress
 progress.todo: À faire
@@ -63,12 +63,12 @@ expressiveCode.copyButtonCopied: Copié !
 # Backend Guides vocabulary
 backend.navTitle: Plus de guides sur les services backend
 # Starlight banner
-starlight.title: Vous voulez créer votre propre Doc ?
+starlight.title: Vous voulez créer votre propre Doc ?
 starlight.description: Prenez ce modèle pour commencer.
 # `<StudioHeading>` component
 studioHeading.label: Fonctionnalité Studio
 # Upgrade guide
-upgrade.implementationPR: "PR d'implémentation : "
+upgrade.implementationPR: "PR d'implémentation : "
 
 # DocSearch component strings
 docsearch.button: Rechercher
