@@ -13,7 +13,7 @@ export type Mode = (typeof MODES)[keyof typeof MODES];
  * may be outdated (e.g. it may not have the latest changes from the default
  * branch).
  */
-export const RELEASE_QUEUE_MODE: Mode = MODES.dryRun;
+export const RELEASE_QUEUE_MODE: Mode = MODES.live;
 
 export const ACCEPTED_LABEL = 'accepted';
 /** Set on umbrella PRs only, so maintainers can filter them in the PR list. */
