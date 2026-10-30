@@ -21,7 +21,7 @@ jobs:
   # `GITHUB_JOB` to leave this job out of the PR's checks.
   release-queue:
     if: >-
-      github.repository_owner == 'withastro' &&
+      github.repository_owner == 'ArmandPhilippot' &&
       (github.event_name == 'workflow_dispatch' || github.event.label.name == 'accepted')
     runs-on: ubuntu-latest
     timeout-minutes: 10
