@@ -13,10 +13,6 @@ Your Astro project code must be **rendered** to HTML in order to be displayed on
 
 By default, Astro pages, routes, and API endpoints will be pre-rendered at build time as static pages. However, you can choose to render some or all of your routes on demand by a server when a route is requested.
 
-On-demand rendered pages and routes are generated per visit, and can be customized for each viewer. For example, a page rendered on demand can show a logged-in user their account information or display freshly updated data without requiring a full-site rebuild.
-
-On-demand rendering on the server at request time is also known as **server-side rendering (SSR)**.
-
 ## Server adapters
 
 To render any page on demand, you need to add an **adapter**. Each adapter allows Astro to output a script that runs your project on a specific **runtime**: the environment that runs code on the server to generate pages when they are requested (e.g. Netlify, Cloudflare).
