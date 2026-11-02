@@ -48,4 +48,4 @@ jobs:
           PR_NUMBER: ${{ github.event.pull_request.number }}
         # `dry-run` comments on the PR with what the release assistant would do. `live` joins
         # the PRs.
-        run: node --experimental-transform-types ./scripts/release-assistant.ts --mode dry-run
+        run: node --experimental-transform-types ./scripts/release-assistant.ts --mode live
