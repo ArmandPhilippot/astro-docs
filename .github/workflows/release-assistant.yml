@@ -16,7 +16,7 @@ jobs:
   # `GITHUB_JOB` to leave this job out of the PR's checks.
   join-umbrella:
     if: >-
-      github.repository_owner == 'withastro' &&
+      github.repository_owner == 'ArmandPhilippot' &&
       (github.event_name == 'workflow_dispatch' || github.event.label.name == 'accepted')
     # One run at a time, so that two runs never act on the same umbrella. Set on the job: on the
     # workflow, a run skipped for another label would cancel a pending run.
