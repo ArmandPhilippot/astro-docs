@@ -11,6 +11,7 @@ permissions: {}
 
 jobs:
   trigger:
+    # `TRIGGER_CHECK_NAME` in `scripts/release-assistant/config.ts` must match this name.
     name: Trigger the release assistant
     if: github.event.label.name == 'accepted'
     runs-on: ubuntu-slim

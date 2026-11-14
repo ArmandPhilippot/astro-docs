@@ -7,6 +7,12 @@ export type Mode = (typeof MODES)[keyof typeof MODES];
 
 export const ACCEPTED_LABEL = 'accepted';
 
+/**
+ * The check `.github/workflows/release-assistant-trigger.yml` adds to labeled
+ * PRs. It tests nothing, so a PR's readiness leaves it out.
+ */
+export const TRIGGER_CHECK_NAME = 'Trigger the release assistant';
+
 export const RELEASE_TYPES = {
 	patch: 'patch',
 	minor: 'minor',
