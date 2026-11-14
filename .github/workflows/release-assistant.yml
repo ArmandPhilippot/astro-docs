@@ -27,6 +27,8 @@ jobs:
     timeout-minutes: 10
     permissions:
       contents: read
+      # `GITHUB_TOKEN` submits the review that blocks the merge of an umbrella PR.
+      pull-requests: write
     steps:
       # On `pull_request_target`, GitHub checks out the default branch, never the PR's branches.
       - name: Check out the default branch
@@ -38,7 +40,8 @@ jobs:
       - name: Run the release assistant
         uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         env:
-          # The workflow's own token reads the release PRs of the framework.
+          # The workflow's own token reads the release PRs of the framework, and reviews the
+          # umbrella PRs.
           GITHUB_TOKEN: ${{ github.token }}
         with:
           # The bot account merges the docs PRs, opens the umbrella PRs, and comments.
