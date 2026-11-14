@@ -7,6 +7,8 @@ export type ReleaseAssistantContext = {
 	docs: Repository;
 	/** Where the run reports what it does, one line at a time. */
 	log: (message: string) => void;
+	/** The name of the check this workflow job adds to PRs. `null` outside GitHub Actions. */
+	ownCheckName: string | null;
 };
 
 /** What a run knows when it starts. */

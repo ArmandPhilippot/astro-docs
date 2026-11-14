@@ -23,6 +23,8 @@ async function preview() {
 	addReadOnlyHook(github, console.info);
 	const context = {
 		repo: DOCS_REPOSITORY,
+		// Not a workflow job, so there is no check to ignore.
+		job: '',
 	};
 	await runReleaseAssistant({ github, context, mode: flags.mode });
 }

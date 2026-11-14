@@ -10,7 +10,7 @@ type RunOptions = {
 	/** The client `actions/github-script` creates, with the bot token. */
 	github: Octokit;
 	/** The workflow run, as `actions/github-script` gives it. */
-	context: Pick<typeof actionsContext, 'repo'>;
+	context: Pick<typeof actionsContext, 'repo' | 'job'>;
 	/** One of `MODES`. */
 	mode: string;
 };
@@ -26,6 +26,8 @@ export async function runReleaseAssistant({ github, context, mode }: RunOptions)
 	const runContext: ReleaseAssistantContext = {
 		docs: new GitHubRepository(github, context.repo),
 		log: console.info,
+		// The job has no name, so its check is named after its ID.
+		ownCheckName: context.job || null,
 	};
 
 	await runDryRun(runContext);
