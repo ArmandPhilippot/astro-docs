@@ -1,0 +1,41 @@
+# Moves accepted docs PRs into the umbrella PR of their release.
+
+name: Release assistant
+
+on:
+  # Needed to comment on PRs from forks. The job never checks out or runs code from the PR.
+  # zizmor: ignore[dangerous-triggers]
+  pull_request_target:
+    types: [labeled]
+
+permissions: {}
+
+jobs:
+  join-umbrella:
+    if: github.repository_owner == 'withastro' && github.event.label.name == 'accepted'
+    # One run at a time, so that two runs never act on the same umbrella. Set on the job: on the
+    # workflow, a run skipped for another label would cancel a pending run.
+    concurrency:
+      group: release-assistant
+      cancel-in-progress: false
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      # On `pull_request_target`, GitHub checks out the default branch, never the PR's branches.
+      - name: Check out the default branch
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+
+      # `actions/github-script` runs on Node.js 24, which reads TypeScript files without a flag.
+      - name: Run the release assistant
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        with:
+          # The bot account comments on the PRs.
+          github-token: ${{ secrets.FREDKBOT_GITHUB_TOKEN }}
+          # `dry-run` previews each accepted PR in a comment, and removes the label.
+          script: |
+            const { runReleaseAssistant } = await import(`${process.env.GITHUB_WORKSPACE}/scripts/release-assistant.ts`);
+            await runReleaseAssistant({ github, context, mode: 'dry-run' });
