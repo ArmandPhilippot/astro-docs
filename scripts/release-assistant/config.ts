@@ -7,6 +7,7 @@ export const MODES = {
 export type Mode = (typeof MODES)[keyof typeof MODES];
 
 export const ACCEPTED_LABEL = 'accepted';
+export const UMBRELLA_LABEL = 'merge-on-release';
 
 export const RELEASE_TYPES = {
 	patch: 'patch',
