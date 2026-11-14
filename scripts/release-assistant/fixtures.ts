@@ -1,3 +1,5 @@
+import { RELEASE_TYPES, type ReleaseType } from './config.ts';
+import type { FrameworkRelease } from './framework-release.ts';
 import { CHECK_STATES } from './github/checks.ts';
 import { FakeRepository, MAINTAINER, type FakeRepositoryState } from './github/fake-repository.ts';
 import type { PullRequestDetails } from './github/repository.ts';
@@ -8,6 +10,34 @@ import type { ReleaseAssistantContext } from './run.ts';
 export const MAIN_BRANCHES = { head: 'umbrella/main', base: 'main' };
 /** The check of the job running the release assistant, as in `.github/workflows/release-assistant.yml`. */
 export const OWN_CHECK_NAME = 'join-umbrella';
+
+type ReleaseFixture = {
+	prNumber?: number;
+	/** As `name@version`, such as `@astrojs/node@10.0.1`. */
+	versions?: string[];
+	type?: ReleaseType;
+};
+
+/**
+ * Builds a release of the framework.
+ *
+ * @param {ReleaseFixture} fixture - The fields that matter to the test.
+ * @returns {FrameworkRelease} The release.
+ */
+export function buildRelease({
+	prNumber = 100,
+	versions = [],
+	type = RELEASE_TYPES.patch,
+}: ReleaseFixture = {}): FrameworkRelease {
+	const packages = versions.map((packageVersion) => {
+		const separatorIndex = packageVersion.lastIndexOf('@');
+		return {
+			name: packageVersion.slice(0, separatorIndex),
+			version: packageVersion.slice(separatorIndex + 1),
+		};
+	});
+	return { prNumber, packages, type };
+}
 
 /**
  * Builds the state of a docs PR that can join its umbrella.

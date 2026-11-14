@@ -38,7 +38,7 @@ jobs:
           # The workflow's own token reads the release PRs of the framework.
           GITHUB_TOKEN: ${{ github.token }}
         with:
-          # The bot account comments on the PRs.
+          # The bot account merges the docs PRs, opens the umbrella PRs, and comments.
           github-token: ${{ secrets.FREDKBOT_GITHUB_TOKEN }}
           # `dry-run` previews each accepted PR in a comment, and removes the label.
           script: |
