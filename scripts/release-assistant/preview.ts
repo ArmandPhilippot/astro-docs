@@ -26,7 +26,8 @@ async function preview() {
 		// Not a workflow job, so there is no check to ignore.
 		job: '',
 	};
-	await runReleaseAssistant({ github, context, mode: flags.mode });
+	// Locally, one token serves both clients.
+	await runReleaseAssistant({ github, workflowGithub: github, context, mode: flags.mode });
 }
 
 await preview();
