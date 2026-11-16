@@ -13,7 +13,7 @@ Astro’s internationalization (i18n) features allow you to adapt your project f
 
 Astro's i18n routing allows you to bring your multilingual content with support for configuring a default language, computing relative page URLs, and accepting preferred languages provided by your visitor's browser. You can also specify fallback languages on a per-language basis so that your visitors can always be directed to existing content on your site.
 
-## Routing Logic
+## Routing logic
 
 Astro uses a [middleware](/en/guides/middleware/) to implement its routing logic. This middleware function is placed in the [first position](/en/guides/middleware/#chaining-middleware) where it awaits every `Response` coming from any additional middleware and each page route before finally executing its own logic.
 
