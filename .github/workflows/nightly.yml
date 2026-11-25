@@ -12,7 +12,7 @@ permissions: {}
 jobs:
   docgen:
     name: Generate Reference Docs
-    if: github.repository_owner == 'withastro'
+    if: github.repository_owner == 'ArmandPhilippot'
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -81,7 +81,7 @@ jobs:
 
   error:
     name: Generate Error Reference Docs
-    if: github.repository_owner == 'withastro'
+    if: github.repository_owner == 'ArmandPhilippot'
     runs-on: ubuntu-latest
     strategy:
       matrix:
